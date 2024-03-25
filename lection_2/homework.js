@@ -12,6 +12,34 @@
 // result[3](); //5
 // result[4](); //5
 
+// Решение 1
+var result = [];
+for (let i = 0; i < 5; i++) {
+  result[i] = function () {
+    console.log(i);
+  };
+}
+
+result[0](); //0
+result[1](); //1
+result[2](); //2
+result[3](); //3
+result[4](); //4
+
+// Решение 2
+var result = [];
+for (var i = 0; i < 5; i++) {
+  result[i] = (function (index) {
+    console.log(index);
+  })(i);
+}
+
+result[0]; //0
+result[1]; //1
+result[2]; //2
+result[3]; //3
+result[4]; //4
+
 //////////////////////////////////////////////////
 
 // function getGroup() {
@@ -31,6 +59,43 @@
 //
 // group[0](); // 10 как исправить на 0
 // group[5](); // 10                  5
+
+// Решение 1
+function getGroup() {
+  let students = [];
+  let i = 0;
+  while (i < 10) {
+    let j = i;
+    students[j] = function () {
+      console.log(j);
+    };
+    i++;
+  }
+
+  return students;
+}
+
+let group = getGroup();
+
+group[0](); //  0
+group[5](); //  5
+
+// Решение 2
+function getGroup() {
+  let students = [];
+  for (let i = 0; i < 10; i++) {
+    students[i] = function () {
+      console.log(i);
+    };
+  }
+
+  return students;
+}
+
+let group1 = getGroup();
+
+group1[0](); //  0
+group1[5](); //  5
 
 //////////////////////////////////////////////////
 
@@ -56,4 +121,3 @@
 //     Если аргумент arr состоит не из чисел, тогда функция должна выбросить ошибку.
 //     Текст ошибки: "В getUniqArray был передан невалидный параметр. Аргумент arr
 // должен быть массивом чисел".
-
