@@ -147,17 +147,18 @@ console.log(result2); // Вывод: 120
 
 // Решение
 function getUniqArray(arr) {
-  let newArr = [];
+  const newArr = [];
 
   for (let i = 0; i < arr.length; i++) {
+    const num = arr[i];
     // Проверка arr на наличие элементов, несоответствующих типу number
-    if (typeof arr[i] !== "number") {
+    if (typeof num !== "number" || Number.isNaN(num)) {
       throw new Error(
         "В getUniqArray был передан невалидный параметр. Аргумент arr должен быть массивом чисел"
       );
     }
 
-    newArr.push(arr[i]);
+    newArr.push(num);
   }
 
   // Получение массива уникальных значений с помощью множества Set
